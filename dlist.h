@@ -108,8 +108,7 @@ public:
     }
 
     iterator end() {
-
-        return iterator(tail);
+        return iterator(tail->next);
     }
 
     ~DList() {
