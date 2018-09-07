@@ -130,7 +130,7 @@ public:
         while ((temp->next)!= nullptr){
             temp=temp->next;
         }
-        return iterator(temp);
+        return iterator(temp->next);
     }
 
     ~SList() {
