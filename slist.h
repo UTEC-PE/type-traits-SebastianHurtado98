@@ -15,7 +15,7 @@ public:
     SListIterator() : Iterator<T>() {};
     SListIterator(Node<T> *current) : Iterator<T>(current) {};
     SListIterator<T> operator++(){
-        this->current= (this->current)->next;
+        this->current= (this->current)->next; // [Review] No estás retornando el iterador 
     };
 };
 
@@ -59,14 +59,14 @@ public:
     bool insert(T data) {
 
         if(head== nullptr){
-            auto *n2= new Node<T>(data);
+            auto *n2= new Node<T>(data); // [Review] No es necesario, ya con el find cubres este caso
             n2->next= nullptr;
             head= n2;
             return true;
         }
         else {
             //True si puede, false si ya estaba el elemento ahí
-            Node<T> **n = &head; //solo para crear puntero a puntero a nodo.
+            Node<T> **n = &head; //solo para crear puntero a puntero a nodo. // [Review] Esto podría ser dentro del fin, podrías reducir tu código
             if (find(data, n)) {
                 return false;
             } else {
@@ -124,7 +124,7 @@ public:
         return iterator(head);
     }
 
-    iterator end() {
+    iterator end() { // [Review] Es lo mismo que iterator(nullptr)
         auto temp=head;
 
         while ((temp->next)!= nullptr){

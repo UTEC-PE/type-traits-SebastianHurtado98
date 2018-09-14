@@ -17,10 +17,10 @@ public:
     DListIterator() : Iterator<T>() {};
     DListIterator(Node<T> *current) : Iterator<T>(current) {};
     DListIterator<T> operator++(){
-        this->current= (this->current)->next;
+        this->current= (this->current)->next; // [Review] No estás retornando el iterador 
     };
     DListIterator<T> operator--(){
-        this->current= (this->current)->prev;
+        this->current= (this->current)->prev; // [Review] No estás retornando el iterador 
     };
 };
 
@@ -108,7 +108,7 @@ public:
     }
 
     iterator end() {
-        return iterator(tail->next);
+        return iterator(tail->next); // [Review] Es lo mismo que iterator(nullptr)
     }
 
     ~DList() {
